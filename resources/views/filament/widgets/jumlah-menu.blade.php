@@ -3,7 +3,7 @@
         <div class="font-bold">
             Jumlah Menu :
         </div>
-        <div class="text-2xl">
+        <div class="mb-10 text-2xl">
                 3
         </div>
     </x-filament::section>

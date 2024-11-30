@@ -17,6 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Rupadana\ApiService\ApiServicePlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -28,7 +29,14 @@ class AdminPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->path('admin')
             ->login()
+            ->registration()
+            ->sidebarWidth('20rem')
             ->brandName('Halaman Admin')
+            ->navigationGroups([
+                'Shop',
+                'Blog',
+                'Settings',
+            ])
             ->colors([
                     'primary' => [
                         50 => '238, 242, 255',
@@ -68,6 +76,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->Plugins([
+                ApiServicePlugin::make()
             ]);
     }
 }
